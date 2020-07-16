@@ -109,7 +109,6 @@ export class UserInfoService {
                     });
                 });
             });
-            return;
         }
         catch (e) {
             Log.error("UserInfoService._getClaimsFromJwt: Error parsing JWT response", e.message);
