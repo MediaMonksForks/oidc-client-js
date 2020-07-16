@@ -155,7 +155,8 @@ export class ResponseValidator {
                         return Promise.reject(new Error("sub from user info endpoint does not match sub in access_token"));
                     }
 
-                    response.profile = this._mergeClaims(response.profile, claims);
+                    Log.debug("ResponseValidator._mergeClaims: is set to ", this._settings.mergeClaims);
+                    response.profile = this._settings.mergeClaims ? this._mergeClaims(response.profile, claims) : Object.assign({}, response.profile, claims);
                     Log.debug("ResponseValidator._processClaims: user info claims received, updated profile:", response.profile);
 
                     return response;
